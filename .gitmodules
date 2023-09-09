@@ -1,0 +1,9 @@
+[submodule "knot"]
+	path = knot
+	url = git@github.com:Andrew-Fryer/knot.git
+[submodule "LibAFL_personal"]
+	path = LibAFL_personal
+	url = git@github.com:Andrew-Fryer/LibAFL_personal.git
+[submodule "andrew_fuzz_rust"]
+	path = andrew_fuzz_rust
+	url = git@github.com:Andrew-Fryer/andrew_fuzz_rust.git
