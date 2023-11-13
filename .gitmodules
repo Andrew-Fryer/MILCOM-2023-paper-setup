@@ -4,6 +4,6 @@
 [submodule "LibAFL_personal"]
 	path = LibAFL_personal
 	url = git@github.com:Andrew-Fryer/LibAFL_personal.git
-[submodule "andrew_fuzz_rust"]
+[submodule "combinator_fuzzer"]
 	path = combinator_fuzzer
-	url = git@github.com:Andrew-Fryer/andrew_fuzz_rust.git
+	url = git@github.com:Andrew-Fryer/combinator_fuzzer.git
