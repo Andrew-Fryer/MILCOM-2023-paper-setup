@@ -10,30 +10,26 @@ My fuzzing configuration are in a variety of branches in the LibAFL/fuzzers/fork
 ```bash
 git clone git@github.com:Andrew-Fryer/MILCOM-2023-paper-setup.git
 cd MILCOM-2023-paper-setup/
+git submodule init
+git submodule update
 ```
 
 Optional: Instructions for setting up Docker container:
 ```bash
-sudo docker run -ti --rm ubuntu /bin/bash
 sudo docker run -v $(pwd):/MILCOM-2023-paper-setup -ti --rm ubuntu /bin/bash
 ```
 ...and then inside the docker container:
 ```bash
 cd MILCOM-2023-paper-setup/
-apt update && apt install git
-ssh-keygen # and accept defaults
-cat /root/.ssh/id_rsa.pub
-# add ssh key to github account
-git submodule init
-git submodule update
-# git clone --recurse-submodules git@github.com:Andrew-Fryer/MILCOM-2023-paper-setup.git
-# cd MILCOM-2023-paper-setup/
+apt update
 apt install curl # and accept
 curl https://sh.rustup.rs -sSf | sh # and accept defaults
 source "$HOME/.cargo/env"
 apt install build-essential # and accept
 apt-get install autoconf # and accept
 apt-get install libtool autoconf automake make pkg-config liburcu-dev libgnutls28-dev libedit-dev liblmdb-dev # and accept
+add-apt-repository ppa:maxmind/ppa
+apt-get install libmaxminddb0
 ```
 
 Instructions for running on Ubuntu or inside Docker container:
@@ -52,7 +48,7 @@ popd
 pushd knot
 autoreconf -if
 CC=$(realpath -s ../LibAFL_personal/fuzzers/forkserver_simple/AFLplusplus/afl-clang-fast) ./configure --disable-shared --disable-utilities --disable-documentation
-make # this hangs...?
+make # this hangs sometimes...? (If you have problems building Knot, you could try just using knotd_stdio.compiled_on_ubuntu_22)
 pushd tests-fuzz
 make check-compile # this will create knotd_stdio
 popd
